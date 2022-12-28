@@ -18,15 +18,16 @@ const App = () => {
     console.log(selectedMenuItem)
     // if (item = 'All') setSelectedMenuItem('')
   }
-  const API_URL = `http://www.omdbapi.com/?i=tt3896198&apikey=25f29436`
+  const API_URL = `https://www.omdbapi.com/?i=tt3896198&apikey=25f29436`
   
   
-  const searchMovies = async (name, category) =>{
-    const url = API_URL + name + category;  
-    console.log(url)
-    const result = await fetch(url);   
-    const data = await result.json();
-    setMovies(data.Search);
+  const searchMovies = (name, category) => {
+    const url = API_URL + name + category;
+    console.log(url);
+    return fetch(url)
+      .then(result => result.json())
+      .then(data => setMovies(data.Search))
+      .catch(error => console.error(error));
   }
 
   useEffect( () => {
