@@ -1,9 +1,10 @@
-
 import React from "react";
 import { useEffect,useState } from "react";
 import './App.css'
 import SearchIcon from './search.svg'
-import Movie from "./Movie";
+
+import Sidebar from './components/Sidebar.js'
+import Movie from "./components/Movie.js";
 
 
 const API_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=25f29436"
@@ -31,28 +32,31 @@ const App = () => {
   
   return (
     <div className="app">
-      <h1>Movie Lisr</h1>
-      
-      <div className="search">
-        <input placeholder="search for movie" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-        <img src={SearchIcon} alt="search" onClick={ ()=> serachMovies(searchTerm) } />
-      </div>
-
-      {
-        movies?.length > 0
+      <Sidebar />
+      <div className="right">
+        <h1>Movie Lisr</h1>
         
-        ?( <div className="container">
-            { movies.map((movie) => {
-               return  <Movie movie={movie} />         
-            })
-          } 
-          </div>
-        ) :(
-           <div className="empty">
-             <h2>No movie found</h2>
-             </div>
-        )
-      }
+        <div className="search">
+          <input placeholder="search for movie" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+          <img src={SearchIcon} alt="search" onClick={ ()=> serachMovies(searchTerm) } />
+        </div>
+
+        {
+          movies?.length > 0
+          
+          ?( <div className="container">
+              { movies.map((movie) => {
+                return  <Movie movie={movie} />         
+              })
+            } 
+            </div>
+          ) :(
+            <div className="empty">
+              <h2>No movie found</h2>
+              </div>
+          )
+        }
+      </div>
       
       
     </div>

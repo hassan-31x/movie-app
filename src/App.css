@@ -18,8 +18,11 @@ body {
 }
 
 .app {
-  padding: 4rem;
+  display: flex;
+}
 
+.right {
+  padding: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
