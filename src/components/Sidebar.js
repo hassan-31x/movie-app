@@ -3,7 +3,7 @@ import "./Sidebar.css";
 import { useState, useEffect } from "react";
 import 'boxicons'
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   const useMediaQuery = (query) => {
     const [matches, setMatches] = useState(false);
 
@@ -30,17 +30,17 @@ const Sidebar = () => {
       type: "solid",
     },
     {
-      name: "Movies",
+      name: "Movie",
       iconName: "camera-movie",
       type: "solid",
     },
     {
-      name: "Seies",
+      name: "Series",
       iconName: "movie-play",
       type: "solid",
     },
     {
-      name: "Epsiode",
+      name: "Episode",
       iconName: "movie",
       type: "solid",
     },
@@ -61,6 +61,7 @@ const Sidebar = () => {
       rotate: "180",
     },
   ];
+
   const [hovered, setHovered] = useState(null);
   const [active, setActive] = useState(1);
   const [animate, setAnimate] = useState(false);
@@ -89,22 +90,17 @@ const Sidebar = () => {
               expanded && "expanded-boxicon-container"
             }`}
             onMouseEnter={() => {
-              if (middle) {
-                setHovered(index);
-              }
+              if (middle) setHovered(index);
             }}
             onMouseLeave={() => {
-              if (middle) {
-                setHovered(null);
-              }
+              if (middle) setHovered(null);
             }}
             onClick={() => {
               if (middle) {
-                setActive(index);
-              }
-              if (index === 0) {
-                setExpanded(!expanded);
-              }
+                setActive(index)
+                props.onClickMenuItem(item.name)
+              };
+              if (index === 0) setExpanded(!expanded);
             }}
             key={index}
           >

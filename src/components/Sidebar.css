@@ -2,12 +2,16 @@
     min-height: 100vh;
     height: 100%;
     width: 10rem;
-    background-color: white;
+    background-color: #bababa;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    transition: 0.3s width;
+    transition: 0.3s;
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
 }
 
 .boxicon-container {
@@ -96,8 +100,8 @@
     transition: 0.2s opacity;
 }
 
-.active-description {
-    color: white;
+.active-description, .description:hover {
+    color: #bababa;
 }
 
 .expanded {
